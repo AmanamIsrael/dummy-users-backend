@@ -3,16 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-
-const authRoute = require('./routes/auth');
-// const usersRoute = require('./routes/users');
-
 const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
 
+const authRoute = require('./routes/auth');
+const usersRoute = require('./routes/users');
+
 app.use('/auth', authRoute);
-// app.use('/users', usersRoute);
+app.use('/users', usersRoute);
 
 app.get('/', (req, res) => {
     res.send('This app works')
