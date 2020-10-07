@@ -2,10 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(cors());
 
 const authRoute = require('./routes/auth');
 const usersRoute = require('./routes/users');
