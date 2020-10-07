@@ -26,4 +26,14 @@ router.post('/add-user', verify, (req, res) => {
     }
 })
 
+router.post('/delete-user', verify, async(req, res) => {
+    try {
+        const user = await userModel.findOne({ _id: req.body._id });
+        const deletedUser = await userModel.deleteOne(user);
+        res.send('deleted')
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
+
 module.exports = router;

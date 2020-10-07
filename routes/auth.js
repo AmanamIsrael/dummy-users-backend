@@ -56,7 +56,7 @@ router.post('/login', async(req, res) => {
         return res.status(400).send('password is incorrect');
     }
     //assign token
-    const token = jwt.sign({ id: user._id, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 1) }, process.env.TOKEN_SECRET);
+    const token = jwt.sign({ id: user._id, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24) }, process.env.TOKEN_SECRET);
     res.header('auth-token', token);
 
     try {
